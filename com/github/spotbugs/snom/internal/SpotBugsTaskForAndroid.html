@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -167,6 +167,13 @@ extends <a href="../SpotBugsTask.html" title="class in com.github.spotbugs.snom"
 </a>
 <h3>Nested Class Summary</h3>
 <ul class="blockList">
+<li class="blockList"><a id="nested.classes.inherited.from.class.com.github.spotbugs.snom.SpotBugsTask">
+<!--   -->
+</a>
+<h3>Nested classes/interfaces inherited from class&nbsp;com.github.spotbugs.snom.<a href="../SpotBugsTask.html" title="class in com.github.spotbugs.snom">SpotBugsTask</a></h3>
+<code><a href="../SpotBugsTask.SpotBugsExecutor.html" title="class in com.github.spotbugs.snom">SpotBugsTask.SpotBugsExecutor</a></code></li>
+</ul>
+<ul class="blockList">
 <li class="blockList"><a id="nested.classes.inherited.from.class.org.gradle.api.Task">
 <!--   -->
 </a>
@@ -207,8 +214,8 @@ extends <a href="../SpotBugsTask.html" title="class in com.github.spotbugs.snom"
 <th class="colLast" scope="col">Description</th>
 </tr>
 <tr class="altColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(com.android.build.gradle.tasks.AndroidJavaCompile,org.gradle.api.model.ObjectFactory)">SpotBugsTaskForAndroid</a></span>&#8203;(com.android.build.gradle.tasks.AndroidJavaCompile&nbsp;task,
-                      <a href="https://docs.gradle.org/current/javadoc/org/gradle/api/model/ObjectFactory.html?is-external=true" title="class or interface in org.gradle.api.model" class="externalLink">ObjectFactory</a>&nbsp;objects)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(org.gradle.api.model.ObjectFactory,org.gradle.workers.WorkerExecutor)">SpotBugsTaskForAndroid</a></span>&#8203;(<a href="https://docs.gradle.org/current/javadoc/org/gradle/api/model/ObjectFactory.html?is-external=true" title="class or interface in org.gradle.api.model" class="externalLink">ObjectFactory</a>&nbsp;objects,
+                      <a href="https://docs.gradle.org/current/javadoc/org/gradle/workers/WorkerExecutor.html?is-external=true" title="class or interface in org.gradle.workers" class="externalLink">WorkerExecutor</a>&nbsp;workerExecutor)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -244,13 +251,18 @@ extends <a href="../SpotBugsTask.html" title="class in com.github.spotbugs.snom"
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSourceDirs()">getSourceDirs</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setTask(com.android.build.gradle.tasks.AndroidJavaCompile)">setTask</a></span>&#8203;(com.android.build.gradle.tasks.AndroidJavaCompile&nbsp;task)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.com.github.spotbugs.snom.SpotBugsTask">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;com.github.spotbugs.snom.<a href="../SpotBugsTask.html" title="class in com.github.spotbugs.snom">SpotBugsTask</a></h3>
-<code><a href="../SpotBugsTask.html#getEffort()">getEffort</a>, <a href="../SpotBugsTask.html#getFirstEnabledReport()">getFirstEnabledReport</a>, <a href="../SpotBugsTask.html#getIgnoreFailures()">getIgnoreFailures</a>, <a href="../SpotBugsTask.html#getOmitVisitors()">getOmitVisitors</a>, <a href="../SpotBugsTask.html#getReportLevel()">getReportLevel</a>, <a href="../SpotBugsTask.html#getReports()">getReports</a>, <a href="../SpotBugsTask.html#getReportsDir()">getReportsDir</a>, <a href="../SpotBugsTask.html#getShowProgress()">getShowProgress</a>, <a href="../SpotBugsTask.html#getVisitors()">getVisitors</a>, <a href="../SpotBugsTask.html#init(com.github.spotbugs.snom.SpotBugsExtension)">init</a>, <a href="../SpotBugsTask.html#reports(groovy.lang.Closure)">reports</a>, <a href="../SpotBugsTask.html#reports(org.gradle.api.Action)">reports</a>, <a href="../SpotBugsTask.html#run()">run</a>, <a href="../SpotBugsTask.html#setReportsDir(org.gradle.api.provider.Provider)">setReportsDir</a></code></li>
+<code><a href="../SpotBugsTask.html#getEffort()">getEffort</a>, <a href="../SpotBugsTask.html#getExcludeFilter()">getExcludeFilter</a>, <a href="../SpotBugsTask.html#getFirstEnabledReport()">getFirstEnabledReport</a>, <a href="../SpotBugsTask.html#getIgnoreFailures()">getIgnoreFailures</a>, <a href="../SpotBugsTask.html#getIncludeFilter()">getIncludeFilter</a>, <a href="../SpotBugsTask.html#getOmitVisitors()">getOmitVisitors</a>, <a href="../SpotBugsTask.html#getOnlyAnalyze()">getOnlyAnalyze</a>, <a href="../SpotBugsTask.html#getReportLevel()">getReportLevel</a>, <a href="../SpotBugsTask.html#getReports()">getReports</a>, <a href="../SpotBugsTask.html#getReportsDir()">getReportsDir</a>, <a href="../SpotBugsTask.html#getShowProgress()">getShowProgress</a>, <a href="../SpotBugsTask.html#getVisitors()">getVisitors</a>, <a href="../SpotBugsTask.html#init(com.github.spotbugs.snom.SpotBugsExtension)">init</a>, <a href="../SpotBugsTask.html#reports(groovy.lang.Closure)">reports</a>, <a href="../SpotBugsTask.html#reports(org.gradle.api.Action)">reports</a>, <a href="../SpotBugsTask.html#run()">run</a>, <a href="../SpotBugsTask.html#setOmitVisitors(java.util.Collection)">setOmitVisitors</a>, <a href="../SpotBugsTask.html#setOnlyAnalyze(java.util.Collection)">setOnlyAnalyze</a>, <a href="../SpotBugsTask.html#setReportsDir(org.gradle.api.provider.Provider)">setReportsDir</a>, <a href="../SpotBugsTask.html#setVisitors(java.util.Collection)">setVisitors</a></code></li>
 </ul>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.org.gradle.api.internal.AbstractTask">
@@ -282,15 +294,15 @@ extends <a href="../SpotBugsTask.html" title="class in com.github.spotbugs.snom"
 <!--   -->
 </a>
 <h3>Constructor Detail</h3>
-<a id="&lt;init&gt;(com.android.build.gradle.tasks.AndroidJavaCompile,org.gradle.api.model.ObjectFactory)">
+<a id="&lt;init&gt;(org.gradle.api.model.ObjectFactory,org.gradle.workers.WorkerExecutor)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>SpotBugsTaskForAndroid</h4>
 <pre>@Inject
-public&nbsp;SpotBugsTaskForAndroid&#8203;(com.android.build.gradle.tasks.AndroidJavaCompile&nbsp;task,
-                              <a href="https://docs.gradle.org/current/javadoc/org/gradle/api/model/ObjectFactory.html?is-external=true" title="class or interface in org.gradle.api.model" class="externalLink">ObjectFactory</a>&nbsp;objects)</pre>
+public&nbsp;SpotBugsTaskForAndroid&#8203;(<a href="https://docs.gradle.org/current/javadoc/org/gradle/api/model/ObjectFactory.html?is-external=true" title="class or interface in org.gradle.api.model" class="externalLink">ObjectFactory</a>&nbsp;objects,
+                              <a href="https://docs.gradle.org/current/javadoc/org/gradle/workers/WorkerExecutor.html?is-external=true" title="class or interface in org.gradle.workers" class="externalLink">WorkerExecutor</a>&nbsp;workerExecutor)</pre>
 </li>
 </ul>
 </li>
@@ -303,6 +315,15 @@ public&nbsp;SpotBugsTaskForAndroid&#8203;(com.android.build.gradle.tasks.Android
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="setTask(com.android.build.gradle.tasks.AndroidJavaCompile)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setTask</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setTask&#8203;(com.android.build.gradle.tasks.AndroidJavaCompile&nbsp;task)</pre>
+</li>
+</ul>
 <a id="getSourceDirs()">
 <!--   -->
 </a>
