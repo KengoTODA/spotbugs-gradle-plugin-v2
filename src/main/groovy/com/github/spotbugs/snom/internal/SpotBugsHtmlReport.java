@@ -20,18 +20,28 @@ import edu.umd.cs.findbugs.annotations.Nullable;
 import java.io.File;
 import java.util.Optional;
 import org.gradle.api.InvalidUserDataException;
+import org.gradle.api.logging.Logger;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.provider.Property;
+import org.gradle.api.resources.ResourceHandler;
 import org.gradle.api.resources.TextResource;
+import org.gradle.api.resources.TextResourceFactory;
 
 public class SpotBugsHtmlReport extends SpotBugsReport {
+
   private final Property<TextResource> stylesheet;
+  private final Property<String> stylesheetPath;
+  private final transient ResourceHandler handler;
+  private final transient Logger logger;
 
   public SpotBugsHtmlReport(ObjectFactory objects, SpotBugsTask task) {
     super(objects, task);
+    handler = task.getProject().getResources();
+    stylesheetPath = objects.property(String.class);
+    stylesheet = objects.property(TextResource.class);
+    logger = task.getLogger();
     // the default reportsDir is "$buildDir/reports/spotbugs/${taskName}/spotbugs.html"
     setDestination(task.getReportsDir().map(dir -> new File(dir, "spotbugs.html")));
-    stylesheet = objects.property(TextResource.class);
   }
 
   @NonNull
@@ -53,33 +63,45 @@ public class SpotBugsHtmlReport extends SpotBugsReport {
 
   @Override
   public TextResource getStylesheet() {
-    return stylesheet.getOrNull();
-  }
+    if (!stylesheet.isPresent() && !stylesheetPath.isPresent()) {
+      return super.getStylesheet();
+    }
 
-  @Override
-  public void setStylesheet(@Nullable TextResource textResource) {
-    stylesheet.set(textResource);
-  }
+    if (stylesheet.isPresent()) {
+      return stylesheet.get();
+    }
 
-  @Override
-  public void setStylesheet(@Nullable String path) {
-    Optional<File> spotbugsJar =
+    TextResourceFactory factory = handler.getText();
+    Optional<File> spotbugs =
         getTask().getProject().getConfigurations().getByName("spotbugs")
-            // FIXME this operation probably evaluates the spotbugs configuration, that may make the
-            // build slow
             .files(
                 dependency ->
                     dependency.getGroup().equals("com.github.spotbugs")
                         && dependency.getName().equals("spotbugs"))
             .stream()
             .findFirst();
-    if (spotbugsJar.isPresent()) {
-      TextResource textResource =
-          getTask().getProject().getResources().getText().fromArchiveEntry(spotbugsJar.get(), path);
-      setStylesheet(textResource);
+    if (spotbugs.isPresent()) {
+      File jar = spotbugs.get();
+      logger.debug(
+          "Specified stylesheet ({}) found in spotbugs configuration: {}",
+          stylesheetPath.get(),
+          jar.getAbsolutePath());
+      return factory.fromArchiveEntry(jar, stylesheetPath.get());
     } else {
       throw new InvalidUserDataException(
-          "The dependency on SpotBugs not found in 'spotbugs' configuration");
+          "Specified stylesheet ("
+              + stylesheetPath.get()
+              + ") does not found in spotbugs configuration");
     }
+  }
+
+  @Override
+  public void setStylesheet(@Nullable String path) {
+    stylesheetPath.set(path);
+  }
+
+  @Override
+  public void setStylesheet(@Nullable TextResource textResource) {
+    stylesheet.set(textResource);
   }
 }
