@@ -44,7 +44,7 @@ jobs:
       run: ./gradlew build
     - name: Analyze with SonarQube
       run: ./gradlew sonarqube -Dsonar.login=$SONAR_LOGIN
-      if: $SONAR_LOGIN
+      if: $SONAR_LOGIN != ''
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SONAR_LOGIN: ${{ secrets.SONAR_LOGIN }}
