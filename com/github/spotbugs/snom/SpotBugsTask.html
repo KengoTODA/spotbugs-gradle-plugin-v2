@@ -97,6 +97,18 @@ if (location.href.indexOf('is-external=true') == -1) {
     <ul class="blockList">
         <li class="blockList">
 
+            <dl>
+                <dt>All Implemented Interfaces and Traits:</dt>
+                <dd><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/VerificationTask.html' title='VerificationTask'>VerificationTask</a></dd>
+            </dl>
+            <!-- todo: direct known subclasses -->
+            <hr>
+            <br>
+<pre>abstract&nbsp;class SpotBugsTask
+extends <a href='https://docs.gradle.org/current/javadoc/org/gradle/api/DefaultTask.html' title='DefaultTask'>DefaultTask</a>
+
+</pre>
+
 
 
     <p> The Gradle task to run the SpotBugs analysis. All properties are optional.
@@ -328,8 +340,8 @@ if (location.href.indexOf('is-external=true') == -1) {
                         
                         <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
-                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/util/Set.html' title='Set'>Set</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt;</code></td>
-                            <td class="colLast"><code><strong><a href="#getJarOnClasspath()">getJarOnClasspath</a></strong>()</code><br></td>
+                            <td class="colLast"><code>boolean</code></td>
+                            <td class="colLast"><code><strong><a href="#getIgnoreFailures()">getIgnoreFailures</a></strong>()</code><br></td>
                         </tr>
                         
                         <tr class="altColor">
@@ -347,41 +359,59 @@ if (location.href.indexOf('is-external=true') == -1) {
                         
                         <tr class="altColor">
                             <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code><a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/util/Set.html' title='Set'>Set</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt;</code></td>
+                            <td class="colLast"><code><strong><a href="#getSpotbugsClasspath()">getSpotbugsClasspath</a></strong>()</code><br></td>
+                        </tr>
+                        
+                        <tr class="rowColor">
+                            <td class="colFirst"><code></code></td>
                             <td class="colLast"><code><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/FileCollection.html' title='FileCollection'>FileCollection</a></code></td>
                             <td class="colLast"><code><strong><a href="#getTargetClassFiles()">getTargetClassFiles</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>protected&nbsp;void</code></td>
                             <td class="colLast"><code><strong><a href="#init(com.github.spotbugs.snom.SpotBugsExtension)">init</a></strong>(<a href='../../../../com/github/spotbugs/snom/SpotBugsExtension.html'>SpotBugsExtension</a> extension)</code><br>Set properties from extension right after the task creation. </td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/NamedDomainObjectContainer.html' title='NamedDomainObjectContainer'>NamedDomainObjectContainer</a>&lt;? extends <a href='../../../../com/github/spotbugs/snom/SpotBugsReport.html' title='SpotBugsReport'>SpotBugsReport</a>&gt;</code></td>
                             <td class="colLast"><code><strong><a href="#reports(Closure<NamedDomainObjectContainer<? extends SpotBugsReport>>)">reports</a></strong>(<a href='http://docs.groovy-lang.org/latest/html/gapi/groovy/lang/Closure.html' title='Closure'>Closure</a>&lt;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/NamedDomainObjectContainer.html' title='NamedDomainObjectContainer'>NamedDomainObjectContainer</a>&lt;? extends <a href='../../../../com/github/spotbugs/snom/SpotBugsReport.html' title='SpotBugsReport'>SpotBugsReport</a>&gt;&gt; closure)</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/NamedDomainObjectContainer.html' title='NamedDomainObjectContainer'>NamedDomainObjectContainer</a>&lt;? extends <a href='../../../../com/github/spotbugs/snom/SpotBugsReport.html' title='SpotBugsReport'>SpotBugsReport</a>&gt;</code></td>
                             <td class="colLast"><code><strong><a href="#reports(Action<NamedDomainObjectContainer<? extends SpotBugsReport>>)">reports</a></strong>(<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/Action.html' title='Action'>Action</a>&lt;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/NamedDomainObjectContainer.html' title='NamedDomainObjectContainer'>NamedDomainObjectContainer</a>&lt;? extends <a href='../../../../com/github/spotbugs/snom/SpotBugsReport.html' title='SpotBugsReport'>SpotBugsReport</a>&gt;&gt; configureAction)</code><br></td>
                         </tr>
                         
-                        <tr class="altColor">
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>void</code></td>
                             <td class="colLast"><code><strong><a href="#run()">run</a></strong>()</code><br></td>
                         </tr>
                         
-                        <tr class="rowColor">
+                        <tr class="altColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>void</code></td>
                             <td class="colLast"><code><strong><a href="#setEffort(java.lang.String)">setEffort</a></strong>(<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/lang/String.html' title='String'>String</a> name)</code><br></td>
                         </tr>
                         
+                        <tr class="rowColor">
+                            <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code>void</code></td>
+                            <td class="colLast"><code><strong><a href="#setIgnoreFailures(Provider<Boolean>)">setIgnoreFailures</a></strong>(<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Provider.html' title='Provider'>Provider</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/lang/Boolean.html' title='Boolean'>Boolean</a>&gt; b)</code><br></td>
+                        </tr>
+                        
                         <tr class="altColor">
+                            <td class="colFirst"><code></code></td>
+                            <td class="colLast"><code>void</code></td>
+                            <td class="colLast"><code><strong><a href="#setIgnoreFailures(boolean)">setIgnoreFailures</a></strong>(boolean b)</code><br></td>
+                        </tr>
+                        
+                        <tr class="rowColor">
                             <td class="colFirst"><code></code></td>
                             <td class="colLast"><code>void</code></td>
                             <td class="colLast"><code><strong><a href="#setReportLevel(java.lang.String)">setReportLevel</a></strong>(<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/lang/String.html' title='String'>String</a> name)</code><br></td>
@@ -475,9 +505,7 @@ final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provi
                         <a name="ignoreFailures"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/Input.html' title='Input'>Input</a>
-@<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/util/Optional.html' title='Optional'>Optional</a>
-@edu.umd.cs.findbugs.annotations.NonNull
+                                <h4>@edu.umd.cs.findbugs.annotations.NonNull
 final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/lang/Boolean.html' title='Boolean'>Boolean</a>&gt; <strong>ignoreFailures</strong></h4>
                                 <p></p>
                             </li>
@@ -698,12 +726,11 @@ final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provi
                             </li>
                         </ul>
                     
-                        <a name="getJarOnClasspath()"><!-- --></a>
+                        <a name="getIgnoreFailures()"><!-- --></a>
                         <ul class="blockListLast">
                             <li class="blockList">
-                                <h4>@edu.umd.cs.findbugs.annotations.NonNull
-@<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/Internal.html' title='Internal'>Internal</a>
-<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/util/Set.html' title='Set'>Set</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt; <strong>getJarOnClasspath</strong>()</h4>
+                                <h4>@<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/Input.html' title='Input'>Input</a>
+boolean <strong>getIgnoreFailures</strong>()</h4>
                                 <p></p>
                             </li>
                         </ul>
@@ -728,6 +755,16 @@ final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provi
                                 <p> Property to specify the directories that contain the source of target classes to analyze.
  Default value is the source directory of the target sourceSet.
      </p>
+                            </li>
+                        </ul>
+                    
+                        <a name="getSpotbugsClasspath()"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>@edu.umd.cs.findbugs.annotations.NonNull
+@<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/tasks/Internal.html' title='Internal'>Internal</a>
+<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/util/Set.html' title='Set'>Set</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt; <strong>getSpotbugsClasspath</strong>()</h4>
+                                <p></p>
                             </li>
                         </ul>
                     
@@ -783,6 +820,22 @@ void <strong>run</strong>()</h4>
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>void <strong>setEffort</strong>(@edu.umd.cs.findbugs.annotations.Nullable <a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/lang/String.html' title='String'>String</a> name)</h4>
+                                <p></p>
+                            </li>
+                        </ul>
+                    
+                        <a name="setIgnoreFailures(Provider<Boolean>)"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>void <strong>setIgnoreFailures</strong>(<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Provider.html' title='Provider'>Provider</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/lang/Boolean.html' title='Boolean'>Boolean</a>&gt; b)</h4>
+                                <p></p>
+                            </li>
+                        </ul>
+                    
+                        <a name="setIgnoreFailures(boolean)"><!-- --></a>
+                        <ul class="blockListLast">
+                            <li class="blockList">
+                                <h4>void <strong>setIgnoreFailures</strong>(boolean b)</h4>
                                 <p></p>
                             </li>
                         </ul>
