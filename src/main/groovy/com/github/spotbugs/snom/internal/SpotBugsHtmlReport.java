@@ -31,7 +31,7 @@ public class SpotBugsHtmlReport extends SpotBugsReport {
   public SpotBugsHtmlReport(ObjectFactory objects, SpotBugsTask task) {
     super(objects, task);
     // the default reportsDir is "$buildDir/reports/spotbugs/${taskName}/spotbugs.html"
-    setDestination(task.getReportsDir().map(dir -> new File(dir, "spotbugs.html")));
+    setDestination(task.getReportsDir().file("spotbugs.html").get().getAsFile());
     stylesheet = objects.property(TextResource.class);
     stylesheetPath = objects.property(String.class);
   }
