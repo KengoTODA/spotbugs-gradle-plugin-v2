@@ -154,10 +154,10 @@ class SpotBugsExtension {
         onlyAnalyze = objects.listProperty(String);
         projectName = objects.property(String);
         release = objects.property(String);
-        reportsDir.set(project.layout.buildDirectory.dir('reports/spotbugs'))
         project.afterEvaluate( { p ->
             projectName.convention(p.getName());
             release.convention(p.getVersion().toString());
+            reportsDir.convention(project.layout.buildDirectory.dir('reports/spotbugs'))
         });
         jvmArgs = objects.listProperty(String);
         extraArgs = objects.listProperty(String);

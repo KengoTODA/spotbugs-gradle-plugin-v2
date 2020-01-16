@@ -17,13 +17,14 @@ import com.github.spotbugs.snom.SpotBugsReport;
 import com.github.spotbugs.snom.SpotBugsTask;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.Optional;
+import org.gradle.api.file.RegularFile;
 import org.gradle.api.model.ObjectFactory;
 
 public class SpotBugsTextReport extends SpotBugsReport {
   public SpotBugsTextReport(ObjectFactory objects, SpotBugsTask task) {
     super(objects, task);
     // the default reportsDir is "$buildDir/reports/spotbugs/${taskName}/spotbugs.txt"
-    setDestination(task.getReportsDir().file("spotbugs.txt").get().getAsFile());
+    setDestination(task.getReportsDir().file("spotbugs.txt").map(RegularFile::getAsFile));
   }
 
   @NonNull
