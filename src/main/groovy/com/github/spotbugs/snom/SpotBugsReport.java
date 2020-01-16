@@ -20,7 +20,6 @@ import java.io.File;
 import java.util.Optional;
 import javax.annotation.Nullable;
 import javax.inject.Inject;
-
 import org.gradle.api.file.RegularFileProperty;
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.provider.Property;

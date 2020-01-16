@@ -17,10 +17,9 @@ import com.github.spotbugs.snom.SpotBugsReport;
 import com.github.spotbugs.snom.SpotBugsTask;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.Optional;
+import javax.inject.Inject;
 import org.gradle.api.file.RegularFile;
 import org.gradle.api.model.ObjectFactory;
-
-import javax.inject.Inject;
 
 public abstract class SpotBugsXmlReport extends SpotBugsReport {
 
