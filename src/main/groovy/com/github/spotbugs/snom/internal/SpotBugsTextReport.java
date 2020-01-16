@@ -17,6 +17,7 @@ import com.github.spotbugs.snom.SpotBugsReport;
 import com.github.spotbugs.snom.SpotBugsTask;
 import edu.umd.cs.findbugs.annotations.NonNull;
 import java.util.Optional;
+
 import org.gradle.api.file.RegularFile;
 import org.gradle.api.model.ObjectFactory;
 
