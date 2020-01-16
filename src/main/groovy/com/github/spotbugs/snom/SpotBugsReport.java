@@ -19,7 +19,8 @@ import groovy.lang.Closure;
 import java.io.File;
 import java.util.Optional;
 import javax.annotation.Nullable;
-import org.gradle.api.file.RegularFileProperty;
+import javax.inject.Inject;
+
 import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.provider.Property;
 import org.gradle.api.provider.Provider;
@@ -36,12 +37,13 @@ public abstract class SpotBugsReport
     implements SingleFileReport,
         CustomizableHtmlReport // to expose CustomizableHtmlReport#setStylesheet to build script
 {
-  private final RegularFileProperty destination;
+  private final Property<File> destination;
   private final Property<Boolean> isEnabled;
   private final SpotBugsTask task;
 
+  @Inject
   public SpotBugsReport(ObjectFactory objects, SpotBugsTask task) {
-    this.destination = objects.fileProperty();
+    this.destination = objects.property(File.class);
     this.isEnabled = objects.property(Boolean.class);
     this.task = task;
   }
@@ -52,7 +54,7 @@ public abstract class SpotBugsReport
   @Override
   @OutputFile
   public File getDestination() {
-    return destination.get().getAsFile();
+    return destination.getOrNull();
   }
 
   @Override
@@ -84,7 +86,7 @@ public abstract class SpotBugsReport
 
   @Override
   public void setDestination(Provider<File> provider) {
-    destination.fileProvider(provider);
+    destination.set(provider);
   }
 
   @Override

@@ -254,11 +254,11 @@ abstract class SpotBugsTask extends DefaultTask implements VerificationTask {
                 SpotBugsReport, {name ->
                     switch (name) {
                         case "html":
-                            return new SpotBugsHtmlReport(objects, this);
+                            return objects.newInstance(SpotBugsHtmlReport.class, objects, this)
                         case "xml":
-                            return new SpotBugsXmlReport(objects, this);
+                            return objects.newInstance(SpotBugsXmlReport.class, objects, this)
                         case "text":
-                            return new SpotBugsTextReport(objects, this);
+                            return objects.newInstance(SpotBugsTextReport.class, objects, this)
                         default:
                             throw new InvalidUserDataException(name + " is invalid as the report name");
                     }

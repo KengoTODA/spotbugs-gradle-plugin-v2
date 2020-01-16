@@ -25,10 +25,13 @@ import org.gradle.api.model.ObjectFactory;
 import org.gradle.api.provider.Property;
 import org.gradle.api.resources.TextResource;
 
-public class SpotBugsHtmlReport extends SpotBugsReport {
+import javax.inject.Inject;
+
+public abstract class SpotBugsHtmlReport extends SpotBugsReport {
   private final Property<TextResource> stylesheet;
   private final Property<String> stylesheetPath;
 
+  @Inject
   public SpotBugsHtmlReport(ObjectFactory objects, SpotBugsTask task) {
     super(objects, task);
     // the default reportsDir is "$buildDir/reports/spotbugs/${taskName}/spotbugs.html"

@@ -20,7 +20,11 @@ import java.util.Optional;
 import org.gradle.api.file.RegularFile;
 import org.gradle.api.model.ObjectFactory;
 
-public class SpotBugsTextReport extends SpotBugsReport {
+import javax.inject.Inject;
+
+public abstract class SpotBugsTextReport extends SpotBugsReport {
+
+  @Inject
   public SpotBugsTextReport(ObjectFactory objects, SpotBugsTask task) {
     super(objects, task);
     // the default reportsDir is "$buildDir/reports/spotbugs/${taskName}/spotbugs.txt"
