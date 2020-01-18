@@ -39,12 +39,14 @@ public abstract class SpotBugsReport
 {
   private final RegularFileProperty destination;
   private final Property<Boolean> isEnabled;
+  private final Property<Boolean> isRequired;
   private final SpotBugsTask task;
 
   @Inject
   public SpotBugsReport(ObjectFactory objects, SpotBugsTask task) {
     this.destination = objects.fileProperty();
     this.isEnabled = objects.property(Boolean.class);
+    this.isRequired = objects.property(Boolean.class).value(Boolean.TRUE);
     this.task = task;
   }
 
@@ -57,10 +59,22 @@ public abstract class SpotBugsReport
     return destination.get().getAsFile();
   }
 
+  // @Override // New API from 6.1; see https://github.com/gradle/gradle/issues/11923
+  @OutputFile
+  public RegularFileProperty getOutputLocation() {
+    return destination;
+  }
+
   @Override
   @Internal("This property returns always same value")
   public OutputType getOutputType() {
     return OutputType.FILE;
+  }
+
+  // @Override // New API from 6.1; see https://github.com/gradle/gradle/issues/11923
+  @Input
+  public Property<Boolean> getRequired() {
+    return isRequired;
   }
 
   @Override

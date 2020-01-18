@@ -18,7 +18,6 @@ import org.junit.jupiter.api.BeforeEach
 import spock.lang.Specification
 
 import org.gradle.testkit.runner.GradleRunner
-import spock.lang.Unroll
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 import static org.junit.jupiter.api.Assertions.assertEquals
@@ -74,8 +73,7 @@ public class Foo {
         assertFalse(reportsDir.isDirectory())
     }
 
-    @Unroll
-    def "can generate spotbugs.txt: Gradle #gradleVersion"() {
+    def "can generate spotbugs.txt"() {
         buildFile << """
 spotbugsMain {
     reports {
