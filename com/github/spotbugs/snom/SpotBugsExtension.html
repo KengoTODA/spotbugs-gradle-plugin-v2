@@ -159,7 +159,7 @@ if (location.href.indexOf('is-external=true') == -1) {
                         </tr>
                         
                         <tr class="rowColor">
-                            <td class="colFirst"><code><strong><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt;</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/RegularFileProperty.html' title='RegularFileProperty'>RegularFileProperty</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#excludeFilter">excludeFilter</a></code><br>Property to set the filter file to limit which bug should be reported.</td>
                         </tr>
                         
@@ -174,7 +174,7 @@ if (location.href.indexOf('is-external=true') == -1) {
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt;</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/RegularFileProperty.html' title='RegularFileProperty'>RegularFileProperty</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#includeFilter">includeFilter</a></code><br>Property to set the filter file to limit which bug should be reported.</td>
                         </tr>
                         
@@ -215,7 +215,7 @@ if (location.href.indexOf('is-external=true') == -1) {
                         </tr>
                         
                         <tr class="altColor">
-                            <td class="colFirst"><code><strong><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt;</strong></code>&nbsp;</td>
+                            <td class="colFirst"><code><strong><a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/DirectoryProperty.html' title='DirectoryProperty'>DirectoryProperty</a></strong></code>&nbsp;</td>
                             <td class="colLast"><code><a href="#reportsDir">reportsDir</a></code><br>Property to set the directory to generate report files. </td>
                         </tr>
                         
@@ -351,7 +351,7 @@ final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provi
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>@edu.umd.cs.findbugs.annotations.NonNull
-final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt; <strong>excludeFilter</strong></h4>
+final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/RegularFileProperty.html' title='RegularFileProperty'>RegularFileProperty</a> <strong>excludeFilter</strong></h4>
                                 <p> Property to set the filter file to limit which bug should be reported.
 
  <p>Note that this property will NOT limit which bug should be detected. To limit the target classes to analyze, use <a href='#onlyAnalyze'>onlyAnalyze</a> instead.
@@ -385,7 +385,7 @@ final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provi
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>@edu.umd.cs.findbugs.annotations.NonNull
-final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt; <strong>includeFilter</strong></h4>
+final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/RegularFileProperty.html' title='RegularFileProperty'>RegularFileProperty</a> <strong>includeFilter</strong></h4>
                                 <p> Property to set the filter file to limit which bug should be reported.
 
  <p>Note that this property will NOT limit which bug should be detected. To limit the target classes to analyze, use <a href='#onlyAnalyze'>onlyAnalyze</a> instead.
@@ -471,7 +471,7 @@ final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provi
                         <ul class="blockListLast">
                             <li class="blockList">
                                 <h4>@edu.umd.cs.findbugs.annotations.NonNull
-final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/provider/Property.html' title='Property'>Property</a>&lt;<a href='https://docs.oracle.com/en/java/javase/11/docs/api/java/io/File.html' title='File'>File</a>&gt; <strong>reportsDir</strong></h4>
+final&nbsp;<a href='https://docs.gradle.org/current/javadoc/org/gradle/api/file/DirectoryProperty.html' title='DirectoryProperty'>DirectoryProperty</a> <strong>reportsDir</strong></h4>
                                 <p> Property to set the directory to generate report files. Default is <CODE>"$buildDir/reports/spotbugs"</CODE>.
 
  <p>Note that each <a href='../../../../com/github/spotbugs/snom/SpotBugsTask.html' title='SpotBugsTask'>SpotBugsTask</a> creates own sub-directory in this directory.</p>
