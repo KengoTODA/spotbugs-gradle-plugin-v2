@@ -86,6 +86,21 @@ repositories {
         assertEquals(TaskOutcome.SUCCESS, result.task(":sub:spotbugsMain").outcome)
     }
 
+    def "can use project name of sub project"() {
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(rootDir)
+                .withArguments(':sub:spotbugsMain', '--debug')
+                .withPluginClasspath()
+                .withGradleVersion(version)
+                .forwardOutput()
+                .build()
+
+        then:
+        assertEquals(SUCCESS, result.task(":sub:spotbugsMain").outcome)
+        assertTrue(result.output.contains("-projectName, sub (spotbugsMain)"))
+    }
+
     def "can use toolVersion in subprojects block"() {
         setup:
         buildFile << """
