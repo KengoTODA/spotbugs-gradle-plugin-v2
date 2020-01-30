@@ -15,6 +15,7 @@ package com.github.spotbugs.snom;
 
 import edu.umd.cs.findbugs.annotations.NonNull
 import edu.umd.cs.findbugs.annotations.Nullable
+import org.gradle.api.Action
 import org.gradle.api.file.DirectoryProperty
 import org.gradle.api.file.RegularFileProperty;
 
@@ -154,11 +155,11 @@ class SpotBugsExtension {
         onlyAnalyze = objects.listProperty(String);
         projectName = objects.property(String);
         release = objects.property(String);
-        project.afterEvaluate( { p ->
-            projectName.convention(p.getName());
-            release.convention(p.getVersion().toString());
+        configureFromProject(project, { p ->
+            projectName.convention(p.getName())
+            release.convention(p.getVersion().toString())
             reportsDir.convention(project.layout.buildDirectory.dir('reports/spotbugs'))
-        });
+        })
         jvmArgs = objects.listProperty(String);
         extraArgs = objects.listProperty(String);
         maxHeapSize = objects.property(String);
@@ -173,5 +174,15 @@ class SpotBugsExtension {
     void setEffort(@Nullable String name) {
         Effort effort = name == null ? null : Effort.valueOf(name.toUpperCase())
         getEffort().set(effort)
+    }
+
+    private void configureFromProject(Project project, Action<Project> action) {
+        if (project.state.executed && project.rootProject.state.executed) {
+            action.execute project
+        } else if (!project.rootProject.state.executed) {
+            project.rootProject.afterEvaluate action
+        } else {
+            project.afterEvaluate action
+        }
     }
 }
