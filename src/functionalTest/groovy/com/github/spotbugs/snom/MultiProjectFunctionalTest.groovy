@@ -21,7 +21,9 @@ import org.gradle.util.GradleVersion
 import org.junit.jupiter.api.BeforeEach
 import spock.lang.Specification
 
+import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
 import static org.junit.jupiter.api.Assertions.assertEquals
+import static org.junit.jupiter.api.Assertions.assertTrue
 
 class MultiProjectFunctionalTest extends Specification {
     File rootDir
@@ -82,5 +84,29 @@ repositories {
         then:
         assertEquals(TaskOutcome.SUCCESS, result.task(":sub:classes").outcome)
         assertEquals(TaskOutcome.SUCCESS, result.task(":sub:spotbugsMain").outcome)
+    }
+
+    def "can use toolVersion in subprojects block"() {
+        setup:
+        buildFile << """
+subprojects {
+    spotbugs {
+        toolVersion = '4.0.0-RC1'
+    }
+}
+"""
+
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(rootDir)
+                .withArguments(':sub:spotbugsMain', '--debug')
+                .withPluginClasspath()
+                .withGradleVersion(version)
+                .forwardOutput()
+                .build()
+
+        then:
+        assertEquals(SUCCESS, result.task(":sub:spotbugsMain").outcome)
+        assertTrue(result.output.contains("SpotBugs 4.0.0-RC1"))
     }
 }
