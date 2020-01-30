@@ -29,6 +29,7 @@ class MultiProjectFunctionalTest extends Specification {
     File rootDir
     File buildFile
     String version = System.getProperty('snom.test.functional.gradle', GradleVersion.current().version)
+    File subBuildFile
 
     @BeforeEach
     def setup() {
@@ -58,7 +59,7 @@ public class Foo {
     }
 }
 """
-        File subBuildFile = new File(subProject, "build.gradle")
+        subBuildFile = new File(subProject, "build.gradle")
         subBuildFile << """
 apply plugin: 'java'
 apply plugin: 'jp.skypencil.spotbugs.snom'
@@ -108,6 +109,28 @@ subprojects {
     spotbugs {
         toolVersion = '4.0.0-RC1'
     }
+}
+"""
+
+        when:
+        def result = GradleRunner.create()
+                .withProjectDir(rootDir)
+                .withArguments(':sub:spotbugsMain', '--debug')
+                .withPluginClasspath()
+                .withGradleVersion(version)
+                .forwardOutput()
+                .build()
+
+        then:
+        assertEquals(SUCCESS, result.task(":sub:spotbugsMain").outcome)
+        assertTrue(result.output.contains("SpotBugs 4.0.0-RC1"))
+    }
+
+    def "can use toolVersion in the subproject"() {
+        setup:
+        subBuildFile << """
+spotbugs {
+    toolVersion = '4.0.0-RC1'
 }
 """
 
