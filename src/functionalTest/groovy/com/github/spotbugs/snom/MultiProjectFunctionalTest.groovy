@@ -19,6 +19,7 @@ import org.gradle.testkit.runner.GradleRunner
 import org.gradle.testkit.runner.TaskOutcome
 import org.gradle.util.GradleVersion
 import org.junit.jupiter.api.BeforeEach
+import spock.lang.Ignore
 import spock.lang.Specification
 
 import static org.gradle.testkit.runner.TaskOutcome.SUCCESS
@@ -102,6 +103,7 @@ repositories {
         assertTrue(result.output.contains("-projectName, sub (spotbugsMain)"))
     }
 
+    @Ignore("Gradle does not support this type of configuration. See https://git.io/JvOVT#issuecomment-580239267")
     def "can use toolVersion in subprojects block"() {
         setup:
         buildFile << """
