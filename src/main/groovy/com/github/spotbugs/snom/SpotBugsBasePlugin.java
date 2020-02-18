@@ -38,10 +38,17 @@ public class SpotBugsBasePlugin implements Plugin<Project> {
   public void apply(Project project) {
     verifyGradleVersion(GradleVersion.current());
     project.getPluginManager().apply(ReportingBasePlugin.class);
-    createPluginConfiguration(project);
 
     SpotBugsExtension extension = createExtension(project);
     createConfiguration(project, extension);
+    createPluginConfiguration(project);
+    project
+        .getTasks()
+        .withType(SpotBugsTask.class)
+        .configureEach(
+            (task) -> {
+              task.init(extension);
+            });
   }
 
   private SpotBugsExtension createExtension(Project project) {
